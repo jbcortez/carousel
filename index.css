@@ -1,0 +1,242 @@
+/* Reset and base styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #ffffff;
+    color: #1f1f1f;
+    line-height: 1.6;
+}
+
+/* Carousel container */
+.carousel-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+/* Carousel track */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    gap: 0;
+    padding: 0;
+}
+
+/* Individual cards */
+.carousel-card {
+    flex: 0 0 auto;
+    width: 100vw;
+    min-width: 100vw;
+    max-width: 100vw;
+    background-color: #ffffff;
+    box-shadow: none;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Card visual section */
+.card-visual {
+    position: relative;
+    width: 100%;
+    height: 192px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Card content */
+.card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    height: 210px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: fit-content;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f1f1f;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: #666666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Card link */
+.card-link {
+    display: flex;
+    align-items: center;
+    color: #ED1B2E;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-top: auto;
+    transition: color 0.2s ease;
+}
+
+.link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #ED1B2E;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+}
+
+.card-link:hover .link-icon {
+    transform: translateX(2px);
+}
+
+/* Navigation arrows - Hidden on all screen sizes */
+.carousel-nav {
+    display: none;
+}
+
+/* Pagination dots */
+.carousel-dots {
+    margin: 20px auto 0 auto;
+    width: fit-content;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid #1f1f1f;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.dot.active {
+    background-color: #1f1f1f;
+}
+
+/* Responsive design - Above 500px (non-full-width cards) */
+@media (min-width: 501px) {
+    .carousel-section {
+        padding: 40px 20px;
+    }
+
+    .carousel-track {
+        gap: 3rem;
+        padding: 32px;
+    }
+
+    .carousel-card {
+        width: 100%;
+        min-width: 300px;
+        max-width: 384px;
+        height: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    .carousel-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+}
+
+@media (min-width: 768px) {
+    .carousel-track {
+        gap: 3rem;
+        padding: 48px;
+    }
+
+    .carousel-card {
+        width: 384px;
+        max-width: 384px;
+    }
+
+    .card-content {
+        padding: 32px;
+    }
+
+    .carousel-section {
+        padding: 60px 40px;
+    }
+}
+
+/* Multiple cards visible on larger screens */
+@media (min-width: 1024px) {
+    .carousel-track {
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel-track {
+        gap: 3rem;
+    }
+}
+
+/* Smooth scrolling fallback */
+@media (prefers-reduced-motion: no-preference) {
+    .carousel-track {
+        transition-duration: 0.5s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+        transition-duration: 0.2s;
+    }
+
+    .carousel-card:hover {
+        transform: none;
+    }
+}
